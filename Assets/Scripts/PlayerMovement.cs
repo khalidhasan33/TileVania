@@ -108,8 +108,9 @@ public class PlayerMovement : MonoBehaviour
             isAlive = false;
             myAnimator.SetTrigger("dying");
             myRigidbody.velocity = deathKick;
+            FindObjectOfType<GameSession>().ProcessPlayerDeath();
         }
-        if(myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Enemies", "Spikes")))
+        else if(myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Enemies", "Spikes")))
         {
             isAlive = false;
             myAnimator.SetTrigger("dying");
